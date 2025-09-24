@@ -8,6 +8,8 @@ use App\Items\Torch;
 class Goya extends Npc
 {
     public function name(): string { return 'Goya'; }
+    
+    public $first_meet = true;
 
     public function description(): string
     {
@@ -20,7 +22,10 @@ class Goya extends Npc
         if ($this->playerHasItem(BTPecheLitchi::class)) {
             // On garde l’herbe et on donne une torche
             return [
-                "Merci pour les herbes, elles me seront utiles.",
+                "Oh merci beaucoup !",
+                "\e[3m*Slurp*\e[0m",
+                "...", 
+                "J'adore",
                 $this->takeItem(BTPecheLitchi::class) ? "Laissez-moi vous donner ceci..." : "",
                 ($this->giveItem(new Torch(0, 0)) ? "Vous recevez une Torche !" : "Hum, revenez me voir plus tard."),
                 "Avec une torche, la forêt à l'est sera moins dangereuse."
@@ -28,20 +33,20 @@ class Goya extends Npc
         }
 
         // Première rencontre : il offre un bouclier + donne l'objectif
-        if (!$this->playerHasItem(WoodenShield::class)) {
-            $this->giveItem(new WoodenShield(0, 0));
+        if (!$this->first_meet == true) {
+            $this->first_meet = false;
             return [
-                "Bienvenue, voyageur.",
-                "Prenez ce bouclier — la prudence est mère de sûreté.",
-                "J’aurais besoin d’un service : au sud, près de la rivière, pousse une herbe médicinale.",
-                "Ramenez-m’en un paquet, s’il vous plaît."
+                "J'ai une cousine qui m'avait recommandé le bubble tea Pêche Litchi.",
+                "Tu pourrais m'en ramener un pour que je goûte ?"
             ];
         }
 
         // Rappel de la quête
-        return [
-            "Avez-vous trouvé l’herbe au bord de la rivière (au sud) ?",
-            "Revenez me voir avec un paquet d’herbes et je vous récompenserai."
-        ];
+        if (!$this->first_meet == true) {
+            return [
+                "Je te conseille de chercher le monstre associé dans le coin.",
+                "Je l'ai vu passer par là récemment."
+            ];
+        }
     }
 }

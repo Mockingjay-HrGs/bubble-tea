@@ -3,7 +3,6 @@ namespace App\Maps;
 
 use Jugid\Staurie\Component\Map\Blueprint;
 use Jugid\Staurie\Game\Position\Position;
-use App\Npcs\OldSage;
 use App\Monsters\Slime;
 
 class CentreMilieu extends Blueprint
@@ -27,7 +26,6 @@ class CentreMilieu extends Blueprint
     public function npcs(): array
     {
         return [
-            new OldSage(0, 0), // position locale dans la map
         ];
     }
 
