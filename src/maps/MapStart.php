@@ -4,7 +4,6 @@ namespace App\Maps;
 use Jugid\Staurie\Component\Map\Blueprint;
 use Jugid\Staurie\Game\Position\Position;
 use App\Npcs\OldSage;
-use App\Items\WoodenShield;
 use App\Monsters\Slime;
 
 class MapStart extends Blueprint
@@ -35,7 +34,6 @@ class MapStart extends Blueprint
     public function items(): array
     {
         return [
-            new WoodenShield(0, 0),
         ];
     }
 
