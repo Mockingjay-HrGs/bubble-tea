@@ -21,21 +21,19 @@ class MapStart extends Blueprint
 
     public function position(): Position
     {
-        // Coordonnées de la map sur la carte générale (0,0 pour commencer)
         return new Position(0, 0);
     }
 
     public function npcs(): array
     {
         return [
-            new OldSage(0, 0), // position locale dans la map
+            new OldSage(0, 0),
         ];
     }
 
     public function items(): array
     {
         return [
-            new WoodenShield(0, 0),
         ];
     }
 

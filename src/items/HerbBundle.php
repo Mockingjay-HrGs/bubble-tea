@@ -15,7 +15,6 @@ class HerbBundle extends Item
         return 'Un petit paquet d’herbes médicinales fraîches.';
     }
 
-    // Obligatoire : un tableau de stats (vide si l’item n’apporte aucun bonus)
     public function statistics(): array
     {
         return [];

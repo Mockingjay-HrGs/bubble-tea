@@ -9,7 +9,7 @@ class RiverBank extends Blueprint
 {
     public function name(): string { return 'River Bank'; }
     public function description(): string { return 'Une berge calme. Des herbes aromatiques poussent ici.'; }
-    public function position(): Position { return new Position(0, 1); } // Sud (si ça ne marche pas, essaye north)
+    public function position(): Position { return new Position(0, 1); }
     public function npcs(): array { return []; }
     public function items(): array { return [ new HerbBundle(0, 0) ]; }
     public function monsters(): array { return []; }
