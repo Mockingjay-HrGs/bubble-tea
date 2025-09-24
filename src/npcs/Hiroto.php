@@ -1,14 +1,14 @@
 <?php
 namespace App\Npcs;
 
+use App\Items\BTCocoMenthe;
 use Jugid\Staurie\Game\Npc;
 use App\Items\WoodenShield;
-use App\Items\HerbBundle;
 use App\Items\Torch;
 
-class OldSage extends Npc
+class Hiroto extends Npc
 {
-    public function name(): string { return 'Old Sage'; }
+    public function name(): string { return 'Hiroto'; }
 
     public function description(): string
     {
@@ -18,11 +18,11 @@ class OldSage extends Npc
     public function speak(): string|array
     {
         // Si le joueur a déjà ramené l’herbe : récompense
-        if ($this->playerHasItem(HerbBundle::class)) {
+        if ($this->playerHasItem(BTCocoMenthe::class)) {
             // On garde l’herbe et on donne une torche
             return [
                 "Merci pour les herbes, elles me seront utiles.",
-                $this->takeItem(HerbBundle::class) ? "Laissez-moi vous donner ceci..." : "",
+                $this->takeItem(BTCocoMenthe::class) ? "Laissez-moi vous donner ceci..." : "",
                 ($this->giveItem(new Torch(0, 0)) ? "Vous recevez une Torche !" : "Hum, revenez me voir plus tard."),
                 "Avec une torche, la forêt à l'est sera moins dangereuse."
             ];

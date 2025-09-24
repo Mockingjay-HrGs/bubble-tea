@@ -5,9 +5,9 @@ use Jugid\Staurie\Component\Map\Blueprint;
 use Jugid\Staurie\Game\Position\Position;
 use App\Items\HerbBundle;
 
-class RiverBank extends Blueprint
+class BubbleStore extends Blueprint
 {
-    public function name(): string { return 'River Bank'; }
+    public function name(): string { return 'Bubble Store'; }
     public function description(): string { return 'Une berge calme. Des herbes aromatiques poussent ici.'; }
     public function position(): Position { return new Position(0, 1); } // Sud (si ça ne marche pas, essaye north)
     public function npcs(): array { return []; }
