@@ -6,16 +6,16 @@ use Jugid\Staurie\Game\Position\Position;
 use App\Npcs\OldSage;
 use App\Monsters\Slime;
 
-class MapStart extends Blueprint
+class CentreMilieu extends Blueprint
 {
     public function name(): string
     {
-        return 'Village Square';
+        return 'Centre Milieu';
     }
 
     public function description(): string
     {
-        return 'A small square with a fountain. Paths lead to the forest.';
+        return 'A small square with a fountain. Paths lead to Goya.';
     }
 
     public function position(): Position
@@ -27,13 +27,16 @@ class MapStart extends Blueprint
     public function npcs(): array
     {
         return [
-            new OldSage(0, 0), // position locale dans la map
         ];
     }
 
     public function items(): array
     {
         return [
+<<<<<<< HEAD:src/maps/MapStart.php
+=======
+        
+>>>>>>> bf60b205932349151a1c6c27119caf436489b782:src/maps/CentreMilieu.php
         ];
     }
 
