@@ -4,16 +4,16 @@ namespace App\Items;
 
 use Jugid\Staurie\Game\Item_Equippable;
 
-class Torch extends Item_Equippable
+class Sarbacane extends Item_Equippable
 {
     public function name(): string
     {
-        return 'Torch';
+        return 'Sarbacane';
     }
 
     public function description(): string
     {
-        return 'Une torche rudimentaire qui éclaire bien.';
+        return 'Une sarbacane rudimentaire qui marche plutot bien.';
     }
 
     public function body_part(): string
@@ -26,3 +26,5 @@ class Torch extends Item_Equippable
         return ['ability' => 1];
     }
 }
+
+

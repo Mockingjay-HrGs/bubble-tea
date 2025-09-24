@@ -11,6 +11,7 @@ use Jugid\Staurie\Component\Money\Money;
 use Jugid\Staurie\Component\PrettyPrinter\PrettyPrinter;
 use Jugid\Staurie\Staurie;
 
+
 require __DIR__ . '/vendor/autoload.php';
 
 $staurie = new Staurie('Example lands');
@@ -34,7 +35,6 @@ $menu->configuration([
     ]
 ]);
 
-/* Personnage (si la classe existe dans ta version) */
 $character = $container->registerComponent(MainCharacter::class);
 $character->configuration([
     'ask_name' => false,
@@ -43,7 +43,6 @@ $character->configuration([
     'character_has_gender' => true,
 ]);
 
-/* Map — CHEMIN + NAMESPACE CORRIGÉS */
 $map = $container->registerComponent(Map::class);
 $map->configuration([
     'directory'      => __DIR__ . '/src/maps',
@@ -55,14 +54,13 @@ $map->configuration([
     'y_start'        => 0,
 ]);
 
-/* Introduction */
 $introduction = $container->registerComponent(Introduction::class);
 $introduction->configuration([
     'text'=>[
         'This is an introduction to test the introduction component',
         'You can use it multiline by using an array in configuration'
     ],
-    'title'=>'Chapter 1 : The new game',
+    'title'=>'Chapter 1 : ',
     'scrolling'=>false
 ]);
 

@@ -3,11 +3,11 @@ namespace App\Items;
 
 use Jugid\Staurie\Game\Item;
 
-class HerbBundle extends Item
+class BTTheNoirGrainDeCafe extends Item
 {
     public function name(): string
     {
-        return 'Herb_Bundle';
+        return 'BT Thé Noir Grain de Café';
     }
 
     public function description(): string

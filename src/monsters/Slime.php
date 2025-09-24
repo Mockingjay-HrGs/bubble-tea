@@ -12,7 +12,7 @@ class Slime extends Monster
 
     public function description(): string
     {
-        return 'A wobbling blob of goo. Harmless…but sticky.';
+        return 'A wobbling blob of goo. Harmless… but sticky.';
     }
 
     public function level(): int
@@ -37,10 +37,11 @@ class Slime extends Monster
 
     public function skills(): array
     {
-        // structure libre selon ton futur système
         return [
-            ['name' => 'Poke', 'damage' => 1],
+            [
+                'name'   => 'Poke',
+                'damage' => 1
+            ],
         ];
     }
 }
-
