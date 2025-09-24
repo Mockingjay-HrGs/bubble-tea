@@ -27,7 +27,6 @@ class CentreMilieu extends Blueprint
     public function npcs(): array
     {
         return [
-            new OldSage(0, 0), // position locale dans la map
         ];
     }
 

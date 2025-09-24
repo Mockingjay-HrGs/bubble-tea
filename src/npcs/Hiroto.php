@@ -3,12 +3,12 @@ namespace App\Npcs;
 
 use App\Items\BTCocoMenthe;
 use Jugid\Staurie\Game\Npc;
-use App\Items\WoodenShield;
 use App\Items\Torch;
 
 class Hiroto extends Npc
 {
     public function name(): string { return 'Hiroto'; }
+    public $first_meet = true;
 
     public function description(): string
     {
@@ -21,28 +21,32 @@ class Hiroto extends Npc
         if ($this->playerHasItem(BTCocoMenthe::class)) {
             // On garde l’herbe et on donne une torche
             return [
-                "Merci pour les herbes, elles me seront utiles.",
-                $this->takeItem(BTCocoMenthe::class) ? "Laissez-moi vous donner ceci..." : "",
+                "Aaaah enfin ^^",
+                "Mon envie de bubble tea Coco Menthe va enfin être étouffée.",
+                "Merci, je crois que c'est ça qu'on dit dans ces cas...",
+                $this->takeItem(BTCocoMenthe::class) ? "Et tiens, on est quitte." : "",
                 ($this->giveItem(new Torch(0, 0)) ? "Vous recevez une Torche !" : "Hum, revenez me voir plus tard."),
                 "Avec une torche, la forêt à l'est sera moins dangereuse."
             ];
         }
 
         // Première rencontre : il offre un bouclier + donne l'objectif
-        if (!$this->playerHasItem(WoodenShield::class)) {
-            $this->giveItem(new WoodenShield(0, 0));
+        if (!$this->first_meet == true) {
+            $this->first_meet = false;
             return [
-                "Bienvenue, voyageur.",
-                "Prenez ce bouclier — la prudence est mère de sûreté.",
-                "J’aurais besoin d’un service : au sud, près de la rivière, pousse une herbe médicinale.",
-                "Ramenez-m’en un paquet, s’il vous plaît."
+                "Tu as vu les cocotiers ? Ils sont beaux, pas vrai ?",
+                "Leurs fruits sont délicieux et j'aime faire des bubble tea Coco Menthe.",
+                "Seulement je n'arrive plus à en faire."
             ];
         }
 
         // Rappel de la quête
-        return [
-            "Avez-vous trouvé l’herbe au bord de la rivière (au sud) ?",
-            "Revenez me voir avec un paquet d’herbes et je vous récompenserai."
-        ];
+        if (!$this->first_meet == true) {
+            return [
+                "Quoi ?! Tu n'en a toujours pas trouvé ?",
+                "MAIS DEPECHE TOI !",
+                "Vas tuer les monstres sur la plages ! Je meurs de soif !"
+            ];
+        }
     }
 }

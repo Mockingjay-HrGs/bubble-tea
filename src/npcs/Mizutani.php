@@ -3,12 +3,12 @@ namespace App\Npcs;
 
 use App\Items\BTTheJasminMangue;
 use Jugid\Staurie\Game\Npc;
-use App\Items\WoodenShield;
 use App\Items\Torch;
 
 class Mizutani extends Npc
 {
     public function name(): string { return 'Mizutani'; }
+    public $first_meet = true;
 
     public function description(): string
     {
@@ -21,28 +21,29 @@ class Mizutani extends Npc
         if ($this->playerHasItem(BTTheJasminMangue::class)) {
             // On garde l’herbe et on donne une torche
             return [
-                "Merci pour les herbes, elles me seront utiles.",
-                $this->takeItem(BTTheJasminMangue::class) ? "Laissez-moi vous donner ceci..." : "",
-                ($this->giveItem(new Torch(0, 0)) ? "Vous recevez une Torche !" : "Hum, revenez me voir plus tard."),
+                "Merci jeune ami.",
+                "Grâce à toi je vais pouvoir mieux méditer...",
+                $this->takeItem(BTTheJasminMangue::class) ? "Tiens prends ceci en remerciement pour ta bonté. " : "",
                 "Avec une torche, la forêt à l'est sera moins dangereuse."
             ];
         }
 
-        // Première rencontre : il offre un bouclier + donne l'objectif
-        if (!$this->playerHasItem(WoodenShield::class)) {
-            $this->giveItem(new WoodenShield(0, 0));
+        // Première rencontre : il donne la quête
+        if (!$this->first_meet == true) {
+            $this->first_meet = false;
             return [
-                "Bienvenue, voyageur.",
-                "Prenez ce bouclier — la prudence est mère de sûreté.",
-                "J’aurais besoin d’un service : au sud, près de la rivière, pousse une herbe médicinale.",
-                "Ramenez-m’en un paquet, s’il vous plaît."
+                "Bonjour, l'ami ! J'espère que tu profite des cerisier.",
+                "Rien de mieux qu'un Bubble tea Mangue et thé au jasmin pendant ma méditation ... Mais je suis pacifiste.",
+                "Tu pourrais aller le chercher pour moi s'il te plaît ?"
             ];
         }
 
         // Rappel de la quête
-        return [
-            "Avez-vous trouvé l’herbe au bord de la rivière (au sud) ?",
-            "Revenez me voir avec un paquet d’herbes et je vous récompenserai."
-        ];
+        if (!$this->first_meet == true) {
+            return [
+                "Il te suffit de vaincre un monstre dans la plaine de cerisier pour récupérer le bubble tea.",
+                "Je ne crois pas puisse argumenter avec eux ..."
+            ];
+        }
     }
 }
